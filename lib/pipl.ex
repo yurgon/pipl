@@ -41,12 +41,15 @@ defmodule Pipl do
         first_name = row_filter("First Name", arr)
         last_name = row_filter("Last Name", arr)
         email = row_filter("Email", arr)
+        state = row_filter("State/Province", arr)
+        country = row_filter("Country", arr)
 
         params = %{
           match_requirements: "phone.mobile",
           minimum_match: 1,
           first_name: first_name,
-          last_name: last_name
+          last_name: last_name,
+          raw_address: "#{state} #{country}"
         } |> Map.merge(%{key: key})
         
         #body = File.read!("./tmp/smccurdy@pinnacleliving.com.json") |> Poison.decode!
